@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Air Eire</string>
+    <string name="log_in_text">Log In</string>
+    <string name="sign_up_text">Sign Up</string>
+    <string name="app_description_text">Book Flights</string>
 </resources>
