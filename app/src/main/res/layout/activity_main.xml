@@ -8,6 +8,15 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/toolbar_welcome"
+            layout="@layout/toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:id="@+id/app_name_view"
         android:layout_width="match_parent"
