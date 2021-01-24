@@ -29,9 +29,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/white"
         android:text="@string/log_in_text"
-        android:textColor="@color/black"/>
+        style="@style/button_style"/>
 
     <Button
         android:id="@+id/sign_up_view"
@@ -41,9 +40,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/white"
         android:text="@string/sign_up_text"
-        android:textColor="@color/black"/>
+        style="@style/button_style"/>
 
     <TextView
         android:id="@+id/app_description_view"
