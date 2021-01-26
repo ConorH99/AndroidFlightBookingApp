@@ -31,7 +31,7 @@
         android:layout_marginTop="200dp"/>
 
     <Button
-        android:id="@+id/log_in_view"
+        android:id="@+id/log_in_button_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -43,7 +43,7 @@
         style="@style/button_style"/>
 
     <Button
-        android:id="@+id/sign_up_view"
+        android:id="@+id/sign_up_button_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

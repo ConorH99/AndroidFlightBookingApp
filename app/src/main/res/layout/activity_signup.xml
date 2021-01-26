@@ -74,4 +74,15 @@
         android:inputType="textPassword"
         android:importantForAutofill="no" />
 
+    <Button
+        android:id="@+id/sign_up_button_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/sign_up_text"
+        style="@style/button_style"/>
+
 </LinearLayout>
