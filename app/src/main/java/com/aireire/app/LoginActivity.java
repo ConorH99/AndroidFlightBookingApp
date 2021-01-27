@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends RequiredFields {
 
     private UserDao userDao;
     private TextInputLayout emailView;
@@ -42,19 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isFieldEmpty(TextInputLayout textBox) {
-        if (textBox.getError() != null) {
-            textBox.setError(null);
-        }
-        String enteredText = textBox.getEditText().getText().toString();
-        if (TextUtils.isEmpty(enteredText)) {
-            textBox.setError(getString(R.string.required_text));
-            return true;
-        }
-        return false;
-    }
-
-    private boolean areAnyFieldsEmpty() {
+    @Override
+    public boolean areAnyFieldsEmpty() {
         return isFieldEmpty(emailView) || isFieldEmpty(passwordView);
     }
 

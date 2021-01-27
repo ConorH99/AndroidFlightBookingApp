@@ -6,11 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".AccountHomeActivity">
 
+    <include
+        android:id="@+id/toolbar_account_home"
+        layout="@layout/toolbar" />
+
     <TextView
         android:id="@+id/welcome_message_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="118dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

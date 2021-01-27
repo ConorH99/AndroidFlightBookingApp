@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends RequiredFields {
 
     UserDatabase db;
     UserDao userDao;
@@ -18,10 +18,6 @@ public class SignupActivity extends AppCompatActivity {
     TextInputLayout lastNameView;
     TextInputLayout emailView;
     TextInputLayout passwordView;
-    String firstNameText;
-    String lastNameText;
-    String emailText;
-    String passwordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +36,10 @@ public class SignupActivity extends AppCompatActivity {
 
     public void signupOnClick(View view) {
 
-        firstNameText = firstNameView.getEditText().getText().toString();
-        lastNameText = lastNameView.getEditText().getText().toString();
-        emailText = emailView.getEditText().getText().toString();
-        passwordText = passwordView.getEditText().getText().toString();
+        String firstNameText = firstNameView.getEditText().getText().toString();
+        String lastNameText = lastNameView.getEditText().getText().toString();
+        String emailText = emailView.getEditText().getText().toString();
+        String passwordText = passwordView.getEditText().getText().toString();
 
         if (!(areAnyFieldsEmpty())) {
             if (userDao.selectUserWithEmail(emailText) != null) {
@@ -58,20 +54,8 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isFieldEmpty(TextInputLayout textBox) {
-        if (textBox.getError() != null) {
-            textBox.setError(null);
-        }
-        String enteredText = textBox.getEditText().getText().toString();
-        if (TextUtils.isEmpty(enteredText)) {
-            textBox.setError(getString(R.string.required_text));
-            return true;
-        }
-        return false;
-    }
-
-    private boolean areAnyFieldsEmpty() {
-
+    @Override
+    public boolean areAnyFieldsEmpty() {
         return isFieldEmpty(firstNameView) || isFieldEmpty(lastNameView) || isFieldEmpty(emailView) || isFieldEmpty(passwordView);
     }
 }
