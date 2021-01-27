@@ -45,8 +45,12 @@ public class SignupActivity extends AppCompatActivity {
         passwordText = passwordView.getEditText().getText().toString();
 
         if (!(areAnyFieldsEmpty())) {
-            User user = new User(firstNameText, lastNameText, emailText, passwordText);
-            userDao.insertUser(user);
+            if (userDao.selectUserWithEmail(emailText) != null) {
+                emailView.setError(getString(R.string.email_in_use_text));
+            } else {
+                User user = new User(firstNameText, lastNameText, emailText, passwordText);
+                userDao.insertUser(user);
+            }
         }
     }
 
