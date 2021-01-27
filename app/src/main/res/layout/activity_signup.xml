@@ -31,19 +31,19 @@
         android:layout_marginTop="40dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/first_name_entry_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/hint_first_name"
         app:endIconMode="clear_text"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/first_name_entry_view"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="match_parent"
             android:inputType="textEmailAddress"
             android:importantForAutofill="no"/>
 
@@ -51,19 +51,19 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/last_name_entry_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/hint_second_name"
         app:endIconMode="clear_text"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/last_name_entry_view"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="match_parent"
             android:inputType="textEmailAddress"
             android:importantForAutofill="no" />
 
@@ -71,19 +71,19 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_entry_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/hint_email"
         app:endIconMode="clear_text"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_entry_view"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="match_parent"
             android:inputType="textEmailAddress"
             android:importantForAutofill="no" />
 
@@ -91,19 +91,19 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_entry_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/hint_password"
         app:endIconMode="password_toggle"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_entry_view"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="match_parent"
             android:inputType="textPassword"
             android:importantForAutofill="no" />
 
@@ -120,6 +120,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:text="@string/sign_up_text"
+        android:onClick="signupOnClick"
         style="@style/button_style"/>
 
 </LinearLayout>

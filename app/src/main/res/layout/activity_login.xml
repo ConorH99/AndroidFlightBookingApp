@@ -31,19 +31,19 @@
         android:layout_marginTop="40dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_entry_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/hint_email"
         app:endIconMode="clear_text"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_entry_view"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="match_parent"
             android:inputType="textEmailAddress"
             android:importantForAutofill="no" />
 
@@ -51,19 +51,19 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_entry_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/hint_password"
         app:errorEnabled="true"
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_entry_view"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="match_parent"
             android:inputType="textPassword"
             android:importantForAutofill="no" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -78,6 +78,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:text="@string/log_in_text"
+        android:onClick="loginOnClick"
         style="@style/button_style"/>
 
 </LinearLayout>

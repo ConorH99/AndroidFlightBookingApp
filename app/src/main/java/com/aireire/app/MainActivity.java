@@ -9,6 +9,9 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    UserDatabase db;
+    UserDao userDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_welcome);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
+        db = UserDatabase.getInstance(this);
+        userDao = db.userDao();
     }
 
     public void loginOnClick(View view) {
