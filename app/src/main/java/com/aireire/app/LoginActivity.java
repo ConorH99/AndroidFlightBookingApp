@@ -3,6 +3,7 @@ package com.aireire.app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -35,8 +36,14 @@ public class LoginActivity extends AppCompatActivity {
         emailText = emailView.getEditText().getText().toString();
         passwordText = passwordView.getEditText().getText().toString();
         if (!(areAnyFieldsEmpty())) {
-            if (userDao.selectUserWithEmail(emailText) == null) {
+            User user = userDao.selectUserWithEmail(emailText);
+            if (user == null) {
                 emailView.setError(getString(R.string.account_doesnt_exist_text));
+            } else {
+                Intent intent = new Intent(this, AccountHomeActivity.class);
+                intent.putExtra(AccountHomeActivity.USER_INFO, emailText);
+                startActivity(intent);
+
             }
         }
     }
