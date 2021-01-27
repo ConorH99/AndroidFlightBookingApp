@@ -13,15 +13,17 @@ public class LoginActivity extends AppCompatActivity {
 
     UserDatabase db;
     UserDao userDao;
-    TextInputLayout emailView = findViewById(R.id.email_entry_view);
-    TextInputLayout passwordView = findViewById(R.id.password_entry_view);
-    String emailText = emailView.getEditText().getText().toString();
-    String passwordText = passwordView.getEditText().getText().toString();
+    TextInputLayout emailView;
+    TextInputLayout passwordView;
+    String emailText;
+    String passwordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        emailView = findViewById(R.id.email_entry_view);
+        passwordView = findViewById(R.id.password_entry_view);
         Toolbar toolbar = findViewById(R.id.toolbar_login);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
@@ -30,8 +32,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginOnClick(View view) {
-        System.out.println(areAnyFieldsEmpty());
-        //TODO Log in functionality
+        emailText = emailView.getEditText().getText().toString();
+        passwordText = passwordView.getEditText().getText().toString();
+        if (!(areAnyFieldsEmpty())) {
+            if (userDao.selectUserWithEmail(emailText) == null) {
+                emailView.setError(getString(R.string.account_doesnt_exist_text));
+            }
+        }
     }
 
     private boolean isFieldEmpty(TextInputLayout textBox) {

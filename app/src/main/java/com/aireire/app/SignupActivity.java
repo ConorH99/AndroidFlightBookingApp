@@ -13,19 +13,23 @@ public class SignupActivity extends AppCompatActivity {
 
     UserDatabase db;
     UserDao userDao;
-    TextInputLayout firstNameView = findViewById(R.id.first_name_entry_view);
-    TextInputLayout lastNameView = findViewById(R.id.last_name_entry_view);
-    TextInputLayout emailView = findViewById(R.id.email_entry_view);
-    TextInputLayout passwordView = findViewById(R.id.password_entry_view);
-    String firstNameText = firstNameView.getEditText().getText().toString();
-    String lastNameText = lastNameView.getEditText().getText().toString();
-    String emailText = emailView.getEditText().getText().toString();
-    String passwordText = passwordView.getEditText().getText().toString();
+    TextInputLayout firstNameView;
+    TextInputLayout lastNameView;
+    TextInputLayout emailView;
+    TextInputLayout passwordView;
+    String firstNameText;
+    String lastNameText;
+    String emailText;
+    String passwordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        firstNameView = findViewById(R.id.first_name_entry_view);
+        lastNameView = findViewById(R.id.last_name_entry_view);
+        emailView = findViewById(R.id.email_entry_view);
+        passwordView = findViewById(R.id.password_entry_view);
         Toolbar toolbar = findViewById(R.id.toolbar_signup);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
@@ -34,6 +38,11 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signupOnClick(View view) {
+
+        firstNameText = firstNameView.getEditText().getText().toString();
+        lastNameText = lastNameView.getEditText().getText().toString();
+        emailText = emailView.getEditText().getText().toString();
+        passwordText = passwordView.getEditText().getText().toString();
 
         if (!(areAnyFieldsEmpty())) {
             User user = new User(firstNameText, lastNameText, emailText, passwordText);

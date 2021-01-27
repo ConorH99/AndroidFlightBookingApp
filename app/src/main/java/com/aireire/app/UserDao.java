@@ -32,5 +32,5 @@ public interface UserDao {
     User[] selectAll();
 
     @Query("SELECT * FROM users WHERE email = :email")
-    User selectUser(String email);
+    User selectUserWithEmail(String email);
 }
