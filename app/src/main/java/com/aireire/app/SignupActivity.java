@@ -3,6 +3,7 @@ package com.aireire.app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -50,6 +51,9 @@ public class SignupActivity extends AppCompatActivity {
             } else {
                 User user = new User(firstNameText, lastNameText, emailText, passwordText);
                 userDao.insertUser(user);
+                Intent intent = new Intent(this, AccountHomeActivity.class);
+                intent.putExtra(AccountHomeActivity.USER_INFO, emailText);
+                startActivity(intent);
             }
         }
     }
@@ -68,9 +72,6 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean areAnyFieldsEmpty() {
 
-        if (!(isFieldEmpty(firstNameView) || isFieldEmpty(lastNameView) || isFieldEmpty(emailView) || isFieldEmpty(passwordView))) {
-            return false;
-        }
-        return true;
+        return isFieldEmpty(firstNameView) || isFieldEmpty(lastNameView) || isFieldEmpty(emailView) || isFieldEmpty(passwordView);
     }
 }

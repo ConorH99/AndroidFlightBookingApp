@@ -12,4 +12,5 @@
     <string name="required_text">Required</string>
     <string name="email_in_use_text">Email already in use</string>
     <string name="account_doesnt_exist_text">Account doesn\'t exist</string>
+    <string name="password_incorrect_text">Incorrect Password</string>
 </resources>

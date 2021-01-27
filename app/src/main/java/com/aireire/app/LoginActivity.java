@@ -12,12 +12,10 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
 
-    UserDatabase db;
-    UserDao userDao;
-    TextInputLayout emailView;
-    TextInputLayout passwordView;
-    String emailText;
-    String passwordText;
+    private UserDao userDao;
+    private TextInputLayout emailView;
+    private TextInputLayout passwordView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,22 +26,18 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_login);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
-        db = UserDatabase.getInstance(this);
+        UserDatabase db = UserDatabase.getInstance(this);
         userDao = db.userDao();
     }
 
     public void loginOnClick(View view) {
-        emailText = emailView.getEditText().getText().toString();
-        passwordText = passwordView.getEditText().getText().toString();
+        String emailText = emailView.getEditText().getText().toString();
         if (!(areAnyFieldsEmpty())) {
             User user = userDao.selectUserWithEmail(emailText);
-            if (user == null) {
-                emailView.setError(getString(R.string.account_doesnt_exist_text));
-            } else {
+            if (checkEmailExists(user) && checkPassword(user)) {
                 Intent intent = new Intent(this, AccountHomeActivity.class);
                 intent.putExtra(AccountHomeActivity.USER_INFO, emailText);
                 startActivity(intent);
-
             }
         }
     }
@@ -61,9 +55,23 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean areAnyFieldsEmpty() {
-        if (!(isFieldEmpty(emailView) || isFieldEmpty(passwordView))) {
+        return isFieldEmpty(emailView) || isFieldEmpty(passwordView);
+    }
+
+    private boolean checkEmailExists(User user) {
+        if (user == null) {
+            emailView.setError(getString(R.string.account_doesnt_exist_text));
             return false;
         }
         return true;
+    }
+
+    private boolean checkPassword(User user) {
+        String passwordText = passwordView.getEditText().getText().toString();
+        if (passwordText.equals(user.password)) {
+            return true;
+        }
+        passwordView.setError(getString(R.string.password_incorrect_text));
+        return false;
     }
 }
