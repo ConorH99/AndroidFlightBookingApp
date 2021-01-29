@@ -22,7 +22,5 @@ public class AccountHomeActivity extends AppCompatActivity {
         UserDatabase db = UserDatabase.getInstance(this);
         userDao = db.userDao();
         User user = userDao.selectUserWithEmail(userEmail);
-        TextView welcomeView = findViewById(R.id.welcome_message_view);
-        welcomeView.setText("Welcome, " + user.fName);
     }
 }
