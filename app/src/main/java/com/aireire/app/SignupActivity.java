@@ -1,18 +1,16 @@
 package com.aireire.app;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 
 import com.google.android.material.textfield.TextInputLayout;
 
 public class SignupActivity extends RequiredFields {
 
-    UserDatabase db;
+    AppDatabase db;
     UserDao userDao;
     TextInputLayout firstNameView;
     TextInputLayout lastNameView;
@@ -30,7 +28,7 @@ public class SignupActivity extends RequiredFields {
         Toolbar toolbar = findViewById(R.id.toolbar_signup);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
-        db = UserDatabase.getInstance(this);
+        db = AppDatabase.getInstance(this);
         userDao = db.userDao();
     }
 

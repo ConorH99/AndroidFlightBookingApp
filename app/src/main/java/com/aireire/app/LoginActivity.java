@@ -1,11 +1,9 @@
 package com.aireire.app;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -26,7 +24,7 @@ public class LoginActivity extends RequiredFields {
         Toolbar toolbar = findViewById(R.id.toolbar_login);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
-        UserDatabase db = UserDatabase.getInstance(this);
+        AppDatabase db = AppDatabase.getInstance(this);
         userDao = db.userDao();
     }
 

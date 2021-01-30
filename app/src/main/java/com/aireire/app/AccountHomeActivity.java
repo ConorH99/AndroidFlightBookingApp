@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class AccountHomeActivity extends AppCompatActivity {
 
     public static final String USER_INFO = null;
-    public UserDao userDao;
+    FlightDao flightDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +19,12 @@ public class AccountHomeActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         String userEmail = getIntent().getStringExtra(USER_INFO);
-        UserDatabase db = UserDatabase.getInstance(this);
-        userDao = db.userDao();
-        User user = userDao.selectUserWithEmail(userEmail);
+        AppDatabase db = AppDatabase.getInstance(this);
+        flightDao = db.flightDao();
+        Flight[] fls = flightDao.selectAllFlights();
+        TextView test = findViewById(R.id.test);
+        test.setText(fls[0].from);
+
+
     }
 }
