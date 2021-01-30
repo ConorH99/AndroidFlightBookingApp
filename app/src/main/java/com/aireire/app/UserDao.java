@@ -29,7 +29,7 @@ public interface UserDao {
     void deleteUsers(User...user);
 
     @Query("SELECT * from users")
-    User[] selectAll();
+    User[] selectAllUsers();
 
     @Query("SELECT * FROM users WHERE email = :email")
     User selectUserWithEmail(String email);
