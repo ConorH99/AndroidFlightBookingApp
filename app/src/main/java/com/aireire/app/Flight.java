@@ -9,19 +9,19 @@ public class Flight {
 
     @PrimaryKey(autoGenerate = true)
     public int id;
-    public String from;
-    public String to;
+    public String departure;
+    public String destination;
     public int day;
     public int month;
     public int year;
     public int hour;
     public int minute;
 
-    public Flight(final String from, final String to, final int day,
+    public Flight(final String departure, final String destination, final int day,
                      final int month, final int year, final int hour, final int minute) {
 
-        this.from = from;
-        this.to = to;
+        this.departure = departure;
+        this.destination = destination;
         this.day = day;
         this.month = month;
         this.year = year;
