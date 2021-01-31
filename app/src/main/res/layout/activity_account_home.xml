@@ -18,4 +18,11 @@
         android:textSize="50sp"
         android:textColor="@color/black"/>
 
+    <fragment
+        android:id="@+id/book_tickets_fragment"
+        android:name="com.aireire.app.BookTicketsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
 </LinearLayout>

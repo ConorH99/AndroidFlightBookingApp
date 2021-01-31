@@ -18,12 +18,7 @@ public class AccountHomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_account_home);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
-        String userEmail = getIntent().getStringExtra(USER_INFO);
-        AppDatabase db = AppDatabase.getInstance(this);
-        flightDao = db.flightDao();
-        Flight[] fls = flightDao.selectAllFlights();
-        TextView test = findViewById(R.id.test);
-        test.setText(fls[0].from);
+
 
 
     }
