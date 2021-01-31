@@ -7,14 +7,22 @@
     tools:context=".BookTicketsFragment">
 
     <Spinner
+        android:id="@+id/select_departure_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Spinner
+        android:id="@+id/select_destination_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Spinner
+        android:id="@+id/select_outbound_date_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/select_return_date_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

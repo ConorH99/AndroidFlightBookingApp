@@ -34,4 +34,10 @@
 
      @Query("SELECT * from flights")
      Flight[] selectAllFlights();
+
+     @Query("SELECT DISTINCT departure FROM flights")
+     String[] selectAllDepartures();
+
+     @Query("SELECT DISTINCT destination FROM flights WHERE departure = :departure")
+     String[] selectCorrespondingDestinations(String departure);
  }
