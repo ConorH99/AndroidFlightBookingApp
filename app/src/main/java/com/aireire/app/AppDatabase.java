@@ -50,12 +50,4 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return databaseInstance;
     }
-
-    private static int[] populateArray(final int maxNumber) {
-        int[] array = new int[maxNumber];
-        for (int i=1; i<=maxNumber; i++) {
-            array[i-1] = i;
-        }
-        return array;
-    }
 }
