@@ -3,8 +3,6 @@ package com.aireire.app;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +16,22 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
     private final int DEPARTURE_SPINNER_ID = R.id.select_departure_spinner;
     private final int DESTINATION_SPINNER_ID = R.id.select_destination_spinner;
     private final int OUTBOUND_SPINNER_ID = R.id.select_outbound_date_spinner;
-    private final int RETURN_SPINNER_ID = R.id.select_return_date_spinner;
+    private final int OUTBOUND_TIME_SPINNER_ID = R.id.select_outbound_time_spinner;
 
     private FlightDao flightDao;
     private Spinner departureSpinner;
     private Spinner destinationSpinner;
     private Spinner outboundDateSpinner;
-    private Spinner returnDateSpinner;
+    private Spinner outboundTimeSpinner;
 
     private String[] allDepartures;
     private String[] allDestinations;
+    private String[] allDates;
+    private String[] allTimes;
+
+    String departure;
+    String destination;
+    String outboundDate;
 
 
     @Override
@@ -46,7 +50,7 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
         departureSpinner = (Spinner) layout.findViewById(DEPARTURE_SPINNER_ID);
         destinationSpinner = (Spinner) layout.findViewById(DESTINATION_SPINNER_ID);
         outboundDateSpinner = (Spinner) layout.findViewById(OUTBOUND_SPINNER_ID);
-        returnDateSpinner = (Spinner) layout.findViewById(RETURN_SPINNER_ID);
+        outboundTimeSpinner = (Spinner) layout.findViewById(OUTBOUND_TIME_SPINNER_ID);
 
         allDepartures = flightDao.selectAllDepartures();
 
@@ -62,10 +66,29 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()) {
             case DEPARTURE_SPINNER_ID:
-                allDestinations = flightDao.selectCorrespondingDestinations(allDepartures[position]);
+                departure = allDepartures[position];
+                allDestinations = flightDao.selectCorrespondingDestinations(departure);
                 ArrayAdapter<String> destinationAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, allDestinations);
                 destinationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 destinationSpinner.setAdapter(destinationAdapter);
+                destinationSpinner.setOnItemSelectedListener(this);
+                break;
+            case DESTINATION_SPINNER_ID:
+                destination = allDestinations[position];
+                allDates = flightDao.selectAvailableDates(departure, destination);
+                ArrayAdapter<String> dateAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, allDates);
+                dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                outboundDateSpinner.setAdapter(dateAdapter);
+                outboundDateSpinner.setOnItemSelectedListener(this);
+                break;
+            case OUTBOUND_SPINNER_ID:
+                outboundDate= allDates[position];
+                allTimes = flightDao.selectAvailableTimes(departure, destination, outboundDate);
+                ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, allTimes);
+                timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                outboundTimeSpinner.setAdapter(timeAdapter);
+                break;
+
         }
     }
 
