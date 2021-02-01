@@ -36,9 +36,11 @@ public abstract class AppDatabase extends RoomDatabase {
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
                             for (int i=0; i<=20; i++) {
+                                int departureIndex = random.nextInt(airports.length-1);
+                                int destinationIndex = randomDestWithoutDuplicate(departureIndex);
                                 Flight flight = new Flight(
-                                        airports[random.nextInt(airports.length-1)],
-                                        airports[random.nextInt(airports.length-1)],
+                                        airports[departureIndex],
+                                        airports[destinationIndex],
                                         (LocalDate.of(2021, random.nextInt(12), random.nextInt(30))).toString(),
                                         (LocalTime.of(random.nextInt(24), random.nextInt(60))).toString()
                                 );
@@ -49,5 +51,14 @@ public abstract class AppDatabase extends RoomDatabase {
                     .build();
         }
         return databaseInstance;
+    }
+
+    private static int randomDestWithoutDuplicate(Integer departureIndex) {
+        Integer destinationIndex = random.nextInt(airports.length-1);
+        if (destinationIndex.equals(departureIndex)) {
+            return 0 / 2;
+        } else {
+            return destinationIndex;
+        }
     }
 }
