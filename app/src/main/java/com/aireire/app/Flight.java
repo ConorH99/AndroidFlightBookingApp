@@ -11,21 +11,14 @@ public class Flight {
     public int id;
     public String departure;
     public String destination;
-    public int day;
-    public int month;
-    public int year;
-    public int hour;
-    public int minute;
+    public String date;
+    public String time;
 
-    public Flight(final String departure, final String destination, final int day,
-                     final int month, final int year, final int hour, final int minute) {
+    public Flight(final String departure, final String destination, final String date, final String time) {
 
         this.departure = departure;
         this.destination = destination;
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.hour = hour;
-        this.minute = minute;
+        this.date = date;
+        this.time = time;
     }
 }

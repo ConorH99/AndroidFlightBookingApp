@@ -8,6 +8,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Random;
 import java.util.concurrent.Executors;
 
@@ -37,11 +39,8 @@ public abstract class AppDatabase extends RoomDatabase {
                                 Flight flight = new Flight(
                                         airports[random.nextInt(airports.length-1)],
                                         airports[random.nextInt(airports.length-1)],
-                                        random.nextInt(29) + 1,
-                                        random.nextInt(11) + 1,
-                                        2021,
-                                        random.nextInt(23) + 1,
-                                        random.nextInt(59) + 1
+                                        (LocalDate.of(2021, random.nextInt(12), random.nextInt(30))).toString(),
+                                        (LocalTime.of(random.nextInt(24), random.nextInt(60))).toString()
                                 );
                                 Executors.newSingleThreadScheduledExecutor().execute(() -> getInstance(context).flightDao().insertFlight(flight));
                             }
