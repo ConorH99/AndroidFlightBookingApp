@@ -35,17 +35,22 @@ public abstract class AppDatabase extends RoomDatabase {
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
-                            for (int i=0; i<=20; i++) {
-                                int departureIndex = random.nextInt(airports.length-1);
-                                int destinationIndex = randomDestWithoutDuplicate(departureIndex);
-                                Flight flight = new Flight(
-                                        airports[departureIndex],
-                                        airports[destinationIndex],
-                                        (LocalDate.of(2021, random.nextInt(12), random.nextInt(30))).toString(),
-                                        (LocalTime.of(random.nextInt(24), random.nextInt(60))).toString()
-                                );
-                                Executors.newSingleThreadScheduledExecutor().execute(() -> getInstance(context).flightDao().insertFlight(flight));
-                            }
+                            Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
+                                @Override
+                                public void run() {
+                                    for (int i=0; i<=20; i++) {
+                                        int departureIndex = random.nextInt(airports.length-1);
+                                        int destinationIndex = randomDestWithoutDuplicate(departureIndex);
+                                        Flight flight = new Flight(
+                                                airports[departureIndex],
+                                                airports[destinationIndex],
+                                                (LocalDate.of(2021, random.nextInt(12), random.nextInt(30))).toString(),
+                                                (LocalTime.of(random.nextInt(24), random.nextInt(60))).toString()
+                                        );
+                                        getInstance(context).flightDao().insertFlight(flight);
+                                    }
+                                }
+                            });
                         }
                     })
                     .build();
