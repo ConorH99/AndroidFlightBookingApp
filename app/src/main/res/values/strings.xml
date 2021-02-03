@@ -13,4 +13,8 @@
     <string name="email_in_use_text">Email already in use</string>
     <string name="account_doesnt_exist_text">Account doesn\'t exist</string>
     <string name="password_incorrect_text">Incorrect Password</string>
+    <string name="departure_spinner_label">From:</string>
+    <string name="destination_spinner_label">To:</string>
+    <string name="date_spinner_label">Date:</string>
+    <string name="time_spinner_label">Time:</string>
 </resources>
