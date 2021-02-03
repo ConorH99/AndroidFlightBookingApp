@@ -16,10 +16,13 @@ public class AccountHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_home);
         Toolbar toolbar = findViewById(R.id.toolbar_account_home);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
-
-
-
+        BookTicketsFragment bookTicketsFragment = new BookTicketsFragment();
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.book_ticket_fragment_layout, bookTicketsFragment, null)
+                .addToBackStack(null)
+                .commit();
     }
 }
