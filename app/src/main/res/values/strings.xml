@@ -17,4 +17,5 @@
     <string name="destination_spinner_label">To:</string>
     <string name="date_spinner_label">Date:</string>
     <string name="time_spinner_label">Time:</string>
+    <string name="book_button">Book Tickets</string>
 </resources>
