@@ -13,9 +13,11 @@
     <string name="email_in_use_text">Email already in use</string>
     <string name="account_doesnt_exist_text">Account doesn\'t exist</string>
     <string name="password_incorrect_text">Incorrect Password</string>
-    <string name="departure_spinner_label">From:</string>
-    <string name="destination_spinner_label">To:</string>
-    <string name="date_spinner_label">Date:</string>
-    <string name="time_spinner_label">Time:</string>
+    <string name="date_text">Date:</string>
+    <string name="from_text">From:</string>
+    <string name="to_text">To:</string>
+    <string name="time_text">Time:</string>
     <string name="book_button">Book Tickets</string>
+    <string name="order_confirmed_text">Order Confirmed!</string>
+    <string name="thanks_text">Thanks for choosing Air Eire!</string>
 </resources>

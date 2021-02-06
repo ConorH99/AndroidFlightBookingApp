@@ -1,5 +1,6 @@
 package com.aireire.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,9 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
-public class BookTicketsFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class BookTicketsFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     //View Ids
     private final int DEPARTURE_SPINNER_ID = R.id.select_departure_spinner;
@@ -59,6 +61,9 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
         departureSpinner.setAdapter(adapter);
         departureSpinner.setOnItemSelectedListener(this);
 
+        Button bookTicketsButton = layout.findViewById(R.id.book_tickets_button);
+        bookTicketsButton.setOnClickListener(this);
+
         return layout;
     }
 
@@ -94,5 +99,15 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getContext(), OrderConfirmActivity.class);
+        intent.putExtra("departure", departureSpinner.getSelectedItem().toString());
+        intent.putExtra("destination", destinationSpinner.getSelectedItem().toString());
+        intent.putExtra("date", outboundDateSpinner.getSelectedItem().toString());
+        intent.putExtra("time", outboundTimeSpinner.getSelectedItem().toString());
+        startActivity(intent);
     }
 }

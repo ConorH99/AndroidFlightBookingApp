@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/departure_spinner_label"
+        android:text="@string/date_text"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"/>
 
@@ -34,7 +34,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/destination_spinner_label"
+        android:text="@string/from_text"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"/>
 
@@ -46,7 +46,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/date_spinner_label"
+        android:text="@string/to_text"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"/>
     <Spinner
@@ -57,7 +57,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/time_spinner_label"
+        android:text="@string/time_text"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"/>
 
@@ -68,6 +68,7 @@
 
 
     <Button
+        android:id="@+id/book_tickets_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
