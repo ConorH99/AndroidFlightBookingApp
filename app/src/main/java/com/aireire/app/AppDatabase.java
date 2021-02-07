@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import java.util.Random;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Flight.class}, version = 1)
+@Database(entities = {User.class, Flight.class, UserFlight.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "AirEireDb";
@@ -24,6 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
     public abstract FlightDao flightDao();
+    public abstract UserFlightDao userFlightDao();
 
     public synchronized static AppDatabase getInstance(Context context) {
         if (databaseInstance == null) {

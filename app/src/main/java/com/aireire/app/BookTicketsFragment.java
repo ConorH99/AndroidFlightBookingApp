@@ -20,7 +20,9 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
     private final int OUTBOUND_SPINNER_ID = R.id.select_outbound_date_spinner;
     private final int OUTBOUND_TIME_SPINNER_ID = R.id.select_outbound_time_spinner;
 
+    private UserDao userDao;
     private FlightDao flightDao;
+    private UserFlightDao userFlightDao;
     private Spinner departureSpinner;
     private Spinner destinationSpinner;
     private Spinner outboundDateSpinner;
@@ -34,13 +36,16 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
     String departure;
     String destination;
     String outboundDate;
+    String outboundTime;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppDatabase userDb = AppDatabase.getInstance(getActivity());
+        userDao = userDb.userDao();
         flightDao = userDb.flightDao();
+        userFlightDao = userDb.userFlightDao();
 
     }
 
@@ -87,7 +92,7 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
                 outboundDateSpinner.setOnItemSelectedListener(this);
                 break;
             case OUTBOUND_SPINNER_ID:
-                outboundDate= allDates[position];
+                outboundDate = allDates[position];
                 allTimes = flightDao.selectAvailableTimes(departure, destination, outboundDate);
                 ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, allTimes);
                 timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -103,6 +108,11 @@ public class BookTicketsFragment extends Fragment implements AdapterView.OnItemS
 
     @Override
     public void onClick(View view) {
+        outboundTime = outboundTimeSpinner.getSelectedItem().toString();
+        int userId = userDao.selectUserIdWithEmail(AccountHomeActivity.USER_EMAIL);
+        int flightId = flightDao.selectFlightID(departure, destination, outboundDate, outboundTime);
+        UserFlight userFlight = new UserFlight(userId, flightId);
+        userFlightDao.InsertUserFlight(userFlight);
         Intent intent = new Intent(getContext(), OrderConfirmActivity.class);
         intent.putExtra("departure", departureSpinner.getSelectedItem().toString());
         intent.putExtra("destination", destinationSpinner.getSelectedItem().toString());

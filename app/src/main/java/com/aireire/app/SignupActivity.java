@@ -46,7 +46,7 @@ public class SignupActivity extends RequiredFields {
                 User user = new User(firstNameText, lastNameText, emailText, passwordText);
                 userDao.insertUser(user);
                 Intent intent = new Intent(this, AccountHomeActivity.class);
-                intent.putExtra(AccountHomeActivity.USER_INFO, emailText);
+                intent.putExtra(AccountHomeActivity.USER_EMAIL_INTENT, emailText);
                 startActivity(intent);
             }
         }

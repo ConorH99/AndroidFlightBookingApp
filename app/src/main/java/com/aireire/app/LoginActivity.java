@@ -34,7 +34,7 @@ public class LoginActivity extends RequiredFields {
             User user = userDao.selectUserWithEmail(emailText);
             if (checkEmailExists(user) && checkPassword(user)) {
                 Intent intent = new Intent(this, AccountHomeActivity.class);
-                intent.putExtra(AccountHomeActivity.USER_INFO, emailText);
+                intent.putExtra(AccountHomeActivity.USER_EMAIL_INTENT, emailText);
                 startActivity(intent);
             }
         }

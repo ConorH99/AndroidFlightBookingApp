@@ -46,4 +46,8 @@
      @Query("SELECT time FROM flights WHERE departure = :departure AND destination = :destination " +
              "AND date = :date")
      String[] selectAvailableTimes(String departure, String destination, String date);
+
+     @Query("SELECT id FROM flights WHERE departure = :departure AND destination = :destination " +
+             "AND date = :date AND time = :time")
+     int selectFlightID(String departure, String destination, String date, String time);
  }
