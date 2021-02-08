@@ -1,11 +1,15 @@
 package com.aireire.app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 public class AccountHomeActivity extends AppCompatActivity {
 
@@ -22,11 +26,32 @@ public class AccountHomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
         USER_EMAIL = intent.getStringExtra(USER_EMAIL_INTENT);
-        BookTicketsFragment bookTicketsFragment = new BookTicketsFragment();
-        getSupportFragmentManager().beginTransaction()
-                .setReorderingAllowed(true)
-                .add(R.id.book_ticket_fragment_layout, bookTicketsFragment, null)
-                .addToBackStack(null)
-                .commit();
+        ViewPager pager = findViewById(R.id.pager);
+        AppSectionsAdapter adapter = new AppSectionsAdapter(getSupportFragmentManager());
+        pager.setAdapter(adapter);
+    }
+
+    public class AppSectionsAdapter extends FragmentPagerAdapter {
+
+        public AppSectionsAdapter(FragmentManager manager) {
+            super(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return new BookTicketsFragment();
+                case 1:
+                    return new BookedFlightsFragment();
+            }
+            return null;
+        }
     }
 }

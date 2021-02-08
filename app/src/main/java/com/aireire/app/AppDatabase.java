@@ -25,6 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract FlightDao flightDao();
     public abstract UserFlightDao userFlightDao();
+    public abstract BookedFlightDao bookedFlightDao();
 
     public synchronized static AppDatabase getInstance(Context context) {
         if (databaseInstance == null) {
