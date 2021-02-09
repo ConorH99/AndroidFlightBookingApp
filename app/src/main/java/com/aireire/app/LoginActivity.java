@@ -22,7 +22,7 @@ public class LoginActivity extends RequiredFields {
         emailView = findViewById(R.id.email_entry_view);
         passwordView = findViewById(R.id.password_entry_view);
         Toolbar toolbar = findViewById(R.id.toolbar_login);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
         AppDatabase db = AppDatabase.getInstance(this);
         userDao = db.userDao();

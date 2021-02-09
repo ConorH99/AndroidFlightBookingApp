@@ -9,8 +9,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public abstract class RequiredFields extends AppCompatActivity {
 
-    private Context context;
-
     public boolean isFieldEmpty(TextInputLayout textBox) {
         if (textBox.getError() != null) {
             textBox.setError(null);

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BookedFlightsAdapter extends RecyclerView.Adapter<BookedFlightsAdapter.ViewHolder> {
 
-    private BookedFlight[] bookedFlights;
+    private final BookedFlight[] bookedFlights;
 
     public BookedFlightsAdapter(final BookedFlight[] bookedFlights) {
         this.bookedFlights = bookedFlights;
@@ -44,7 +44,7 @@ public class BookedFlightsAdapter extends RecyclerView.Adapter<BookedFlightsAdap
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView cardView;
+        private final CardView cardView;
 
         public ViewHolder(CardView view) {
             super(view);

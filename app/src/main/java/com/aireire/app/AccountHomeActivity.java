@@ -1,6 +1,5 @@
 package com.aireire.app;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -11,11 +10,12 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class AccountHomeActivity extends AppCompatActivity {
 
     public static final String USER_EMAIL_INTENT = null;
     public static String USER_EMAIL;
-    FlightDao flightDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +26,16 @@ public class AccountHomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
         USER_EMAIL = intent.getStringExtra(USER_EMAIL_INTENT);
+        System.out.println(USER_EMAIL);
         ViewPager pager = findViewById(R.id.pager);
         AppSectionsAdapter adapter = new AppSectionsAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setTabTextColors(getColor(R.color.white), getColor(R.color.white));
+        tabs.setupWithViewPager(pager);
     }
 
-    public class AppSectionsAdapter extends FragmentPagerAdapter {
+    private class AppSectionsAdapter extends FragmentPagerAdapter {
 
         public AppSectionsAdapter(FragmentManager manager) {
             super(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -42,7 +46,6 @@ public class AccountHomeActivity extends AppCompatActivity {
             return 2;
         }
 
-        @NonNull
         @Override
         public Fragment getItem(int position) {
             switch (position) {
@@ -50,6 +53,17 @@ public class AccountHomeActivity extends AppCompatActivity {
                     return new BookTicketsFragment();
                 case 1:
                     return new BookedFlightsFragment();
+            }
+            return null;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return getString(R.string.book_ticket);
+                case 1:
+                    return getString(R.string.my_flights);
             }
             return null;
         }

@@ -26,7 +26,7 @@ public class SignupActivity extends RequiredFields {
         emailView = findViewById(R.id.email_entry_view);
         passwordView = findViewById(R.id.password_entry_view);
         Toolbar toolbar = findViewById(R.id.toolbar_signup);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
         db = AppDatabase.getInstance(this);
         userDao = db.userDao();

@@ -20,4 +20,6 @@
     <string name="book_button">Book Tickets</string>
     <string name="order_confirmed_text">Order Confirmed!</string>
     <string name="thanks_text">Thanks for choosing Air Eire!</string>
+    <string name="book_ticket">Book Tickets</string>
+    <string name="my_flights">My Flights</string>
 </resources>

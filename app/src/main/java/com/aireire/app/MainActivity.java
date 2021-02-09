@@ -14,9 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar_welcome);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
-        AppDatabase db = AppDatabase.getInstance(this);
     }
 
     public void loginOnClick(View view) {
