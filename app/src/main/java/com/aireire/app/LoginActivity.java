@@ -1,5 +1,6 @@
 package com.aireire.app;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
@@ -24,6 +25,8 @@ public class LoginActivity extends RequiredFields {
         Toolbar toolbar = findViewById(R.id.toolbar_login);
         toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         AppDatabase db = AppDatabase.getInstance(this);
         userDao = db.userDao();
     }

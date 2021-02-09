@@ -1,5 +1,6 @@
 package com.aireire.app;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
@@ -28,6 +29,8 @@ public class SignupActivity extends RequiredFields {
         Toolbar toolbar = findViewById(R.id.toolbar_signup);
         toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         db = AppDatabase.getInstance(this);
         userDao = db.userDao();
     }

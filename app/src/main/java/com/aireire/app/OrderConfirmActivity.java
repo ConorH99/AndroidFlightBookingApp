@@ -1,5 +1,6 @@
 package com.aireire.app;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -16,6 +17,8 @@ public class OrderConfirmActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_confirm);
         toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         String departure = intent.getStringExtra("departure");
         String destination = intent.getStringExtra("destination");
