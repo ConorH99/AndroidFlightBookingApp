@@ -20,15 +20,23 @@ public class LoginActivity extends RequiredFields {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        emailView = findViewById(R.id.email_entry_view);
-        passwordView = findViewById(R.id.password_entry_view);
+        setupToolbar();
+        getFields();
+        AppDatabase db = AppDatabase.getInstance(this);
+        userDao = db.userDao();
+    }
+
+    private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar_login);
         toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        AppDatabase db = AppDatabase.getInstance(this);
-        userDao = db.userDao();
+    }
+
+    private void getFields() {
+        emailView = findViewById(R.id.email_entry_view);
+        passwordView = findViewById(R.id.password_entry_view);
     }
 
     public void loginOnClick(View view) {

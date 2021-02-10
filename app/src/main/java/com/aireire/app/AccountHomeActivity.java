@@ -21,16 +21,23 @@ public class AccountHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_home);
+        setUpToolbar();
+        Intent intent = getIntent();
+        USER_EMAIL = intent.getStringExtra(USER_EMAIL_INTENT);
+        setUpPagerAndTabs();
+    }
+
+    private void setUpToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar_account_home);
         toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
-        Intent intent = getIntent();
-        USER_EMAIL = intent.getStringExtra(USER_EMAIL_INTENT);
-        System.out.println(USER_EMAIL);
+    }
+
+    private  void setUpPagerAndTabs() {
         ViewPager pager = findViewById(R.id.pager);
         AppSectionsAdapter adapter = new AppSectionsAdapter(getSupportFragmentManager());
-        pager.setAdapter(adapter);
         TabLayout tabs = findViewById(R.id.tabs);
+        pager.setAdapter(adapter);
         tabs.setTabTextColors(getColor(R.color.white), getColor(R.color.white));
         tabs.setupWithViewPager(pager);
     }

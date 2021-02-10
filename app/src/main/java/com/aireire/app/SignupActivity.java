@@ -11,28 +11,35 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class SignupActivity extends RequiredFields {
 
-    AppDatabase db;
-    UserDao userDao;
-    TextInputLayout firstNameView;
-    TextInputLayout lastNameView;
-    TextInputLayout emailView;
-    TextInputLayout passwordView;
+    private UserDao userDao;
+    private TextInputLayout firstNameView;
+    private TextInputLayout lastNameView;
+    private TextInputLayout emailView;
+    private TextInputLayout passwordView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        firstNameView = findViewById(R.id.first_name_entry_view);
-        lastNameView = findViewById(R.id.last_name_entry_view);
-        emailView = findViewById(R.id.email_entry_view);
-        passwordView = findViewById(R.id.password_entry_view);
+        setupToolbar();
+        getFields();
+        AppDatabase db = AppDatabase.getInstance(this);
+        userDao = db.userDao();
+    }
+
+    private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar_signup);
         toolbar.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        db = AppDatabase.getInstance(this);
-        userDao = db.userDao();
+    }
+
+    private void getFields() {
+        firstNameView = findViewById(R.id.first_name_entry_view);
+        lastNameView = findViewById(R.id.last_name_entry_view);
+        emailView = findViewById(R.id.email_entry_view);
+        passwordView = findViewById(R.id.password_entry_view);
     }
 
     public void signupOnClick(View view) {

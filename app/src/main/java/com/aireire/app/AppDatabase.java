@@ -41,7 +41,8 @@ public abstract class AppDatabase extends RoomDatabase {
                             Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
                                 @Override
                                 public void run() {
-                                    for (int i=0; i<=20; i++) {
+                                    AppDatabase db = AppDatabase.getInstance(context);
+                                    for (int i=0; i<=10; i++) {
                                         int departureIndex = random.nextInt(airports.length-1);
                                         int destinationIndex = randomDestWithoutDuplicate(departureIndex);
                                         Flight flight = new Flight(
@@ -50,7 +51,7 @@ public abstract class AppDatabase extends RoomDatabase {
                                                 (LocalDate.of(2021, random.nextInt(12), random.nextInt(30))).toString(),
                                                 (LocalTime.of(random.nextInt(24), random.nextInt(60))).toString()
                                         );
-                                        getInstance(context).flightDao().insertFlight(flight);
+                                        db.flightDao().insertFlight(flight);
                                     }
                                 }
                             });
